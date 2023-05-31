@@ -107,7 +107,9 @@ RunXkbComp(xkbcomp_buffer_callback callback, void *userdata)
     char tmpname[PATH_MAX];
     const char *xkmfile = tmpname;
 #else
-    const char *xkmfile = "-";
+    // Use "default.xkm" instead of "-"
+    // const char *xkmfile = "-";
+    const char *xkmfile = "default.xkm";
 #endif
 
     snprintf(keymap, sizeof(keymap), "server-%s", display);

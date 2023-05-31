@@ -820,6 +820,19 @@ XkbProcessArguments(int argc, char *argv[], int i)
             XkbDfltRepeatInterval = (long) atoi(argv[i]);
         return 2;
     }
+
+    // Allow change of xkbcomp bin directory with environment variable
+    char *xkbBinDir = getenv("XKB_BINDIR");
+    if (xkbBinDir) {
+        XkbBinDirectory = Xstrdup(xkbBinDir);
+    }
+
+    // Allow changing of xkb base directory with environment variable
+    char *xkbBaseDir = getenv("XKBDIR");
+    if (xkbBaseDir) {
+	XkbBaseDirectory = Xstrdup(xkbBaseDir);
+    }
+
     return 0;
 }
 
